@@ -12,7 +12,7 @@ endif # Usage : make main valgrind=1 for debugging
 flags = $(debug_flags) -pedantic -ansi -Wall -std=c++11
 
 
-main: main.o lexer.o symbole.o automate.o etat.o expression.o 
+main: main.o lexer.o symbole.o automate.o etat.o  
 	g++ $(flags) ./*.o -o main
 
 %.o: %.cpp

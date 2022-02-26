@@ -18,10 +18,11 @@ class Automate
     public:
         Automate(string flux);
         ~Automate();
+
         
         void decalage(Symbole* s, Etat* eProchain);
         void reduction(int nbEtats, Symbole* prochainSymbole);
-        void run(Symbole* prochainSymbole); // ?parametres
+        void run(); 
         
 
 };

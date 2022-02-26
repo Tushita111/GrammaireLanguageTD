@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-//#include "automate.h"
+#include "automate.h"
 #include "symbole.h"
 
 class Etat0;
@@ -13,6 +13,7 @@ class Etat6;
 class Etat7;
 class Etat8;
 class Etat9;
+class EtatAccepter;
 
 class Automate;
 
@@ -34,7 +35,7 @@ class Etat0: public Etat
     public:
         Etat0() {}
         virtual ~Etat0(){}
-        void transition(Automate* automate, Symbole* symbole){}
+        void transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -131,4 +132,13 @@ class Etat9: public Etat
 };
 
 
+class EtatAccepter: public Etat 
+{
+    protected:
+    
+    public:
+    EtatAccepter();
+    void transition(Automate* automate, Symbole* symbole);
+    
+};
 

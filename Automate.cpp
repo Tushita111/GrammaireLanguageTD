@@ -1,5 +1,4 @@
 #include "automate.h"
-#include "etat.h"
 #include <iostream>
 #include <stdio.h>
 

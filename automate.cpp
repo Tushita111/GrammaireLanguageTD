@@ -64,11 +64,12 @@ void Automate:: run()
 {
     bool transitionCorrecte= true;
     Symbole* symbolCourant= this->lexer->Consulter();
-    while( transitionCorrecte && symbolCourant!=nullptr)
+    while( transitionCorrecte && *(symbolCourant)!=FIN)
     {
          transitionCorrecte=this->pileEtats->top()->transition(this, symbolCourant);
          this->lexer->Avancer();
-         Symbole* symbolCourant= this->lexer->Consulter();     
+         cout<<"avant consulter"<< *symbolCourant<< endl;
+         symbolCourant= this->lexer->Consulter();     
 
     }
 }

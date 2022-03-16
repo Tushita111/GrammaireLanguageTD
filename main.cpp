@@ -7,14 +7,14 @@ int main(void) {
 
    Lexer l(chaine);
 
-   Symbole * s;
-   while(*(s=l.Consulter())!=FIN) {
+  // Symbole * s;
+   //while(*(s=l.Consulter())!=FIN) {
      // s->Affiche();
      // cout<<endl;
      // l.Avancer();
      Automate automate (chaine);
      automate.run();
-   }
+  // }
    return 0;
 }
 

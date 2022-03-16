@@ -23,9 +23,9 @@ class Etat
 
     public:
         Etat(){}
-        virtual ~Etat(){}
+        ~Etat(){}
         virtual bool transition(Automate* automate, Symbole* symbole) = 0;
-        virtual int numEtat();
+        virtual int numEtat() = 0;
         
 };
 

@@ -96,7 +96,7 @@ class Etat6: public Etat
     protected:
     
     public:
-    Etat6();
+    Etat6(){}
     void transition(Automate* automate, Symbole* symbole);
     
 };
@@ -106,7 +106,7 @@ class Etat7: public Etat
     protected:
     
     public:
-    Etat7();
+    Etat7(){}
     void transition(Automate* automate, Symbole* symbole);
     
 };
@@ -116,7 +116,7 @@ class Etat8: public Etat
     protected:
     
     public:
-    Etat8();
+    Etat8(){}
     void transition(Automate* automate, Symbole* symbole);
     
 };
@@ -126,7 +126,7 @@ class Etat9: public Etat
     protected:
     
     public:
-    Etat9();
+    Etat9(){}
     void transition(Automate* automate, Symbole* symbole);
     
 };
@@ -137,7 +137,7 @@ class EtatAccepter: public Etat
     protected:
     
     public:
-    EtatAccepter();
+    EtatAccepter(){}
     void transition(Automate* automate, Symbole* symbole);
     
 };

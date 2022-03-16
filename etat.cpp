@@ -8,6 +8,7 @@ void Etat0:: transition(Automate* automate, Symbole* symbole)
     {
         case INT : automate->decalage(symbole, new Etat3()); break;
         case OPENPAR : automate->decalage(symbole, new Etat2()); break;
+        case EXPRESSION: automate->decalage(symbole, new Etat1()); break;
         default: break;       
 
     }
@@ -31,6 +32,7 @@ void Etat2:: transition(Automate* automate, Symbole* symbole)
     {
         case INT : automate->decalage(symbole, new Etat3()); break;
         case OPENPAR : automate->decalage(symbole, new Etat2()); break;
+        case EXPRESSION: automate->decalage(symbole, new Etat6()); break;
         default: break;       
 
     }
@@ -55,6 +57,7 @@ void Etat4:: transition(Automate* automate, Symbole* symbole)
     {
         case INT : automate->decalage(symbole, new Etat3()); break;
         case OPENPAR : automate->decalage(symbole, new Etat2()); break;
+        case EXPRESSION: automate->decalage(symbole, new Etat7()); break;
         default: break;       
 
     }
@@ -66,6 +69,7 @@ void Etat5:: transition(Automate* automate, Symbole* symbole)
     {
         case INT : automate->decalage(symbole, new Etat3()); break;
         case OPENPAR : automate->decalage(symbole, new Etat2()); break;
+        case EXPRESSION: automate->decalage(symbole, new Etat8()); break;
         default: break;       
 
     }
@@ -120,4 +124,9 @@ void Etat9:: transition(Automate* automate, Symbole* symbole)
         default: break;       
 
     }
+}
+
+void EtatAccepter:: transition(Automate* automate, Symbole* symbole)
+{ 
+
 }

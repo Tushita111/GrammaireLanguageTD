@@ -22,7 +22,7 @@ void Automate::reduction(int nbEtats, Symbole* prochainSymbole)
         //TODO delete pointer in pileEtats
         this->pileEtats->pop();
         pileEvaluation->push(pileSymboles->top());
-        //TODO delete pointer in pileEtats
+        //TODO delete pointer in pileSymboles
         this->pileSymboles->pop();
     }
     Expression* expr;
@@ -62,7 +62,15 @@ void Automate::reduction(int nbEtats, Symbole* prochainSymbole)
 
 void Automate:: run()
 {
+    bool transitionCorrecte= true;
+    Symbole* symbolCourant= this->lexer->Consulter();
+    while( transitionCorrecte && symbolCourant!=nullptr)
+    {
+         transitionCorrecte=this->pileEtats->top()->transition(this, symbolCourant);
+         this->lexer->Avancer();
+         Symbole* symbolCourant= this->lexer->Consulter();     
 
+    }
 }
 Automate:: ~Automate()
 {

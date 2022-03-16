@@ -24,7 +24,7 @@ class Etat
     public:
         Etat(){}
         virtual ~Etat(){}
-        virtual void transition(Automate* automate, Symbole* symbole) = 0;
+        virtual bool transition(Automate* automate, Symbole* symbole) = 0;
         
 };
 
@@ -35,7 +35,7 @@ class Etat0: public Etat
     public:
         Etat0() {}
         virtual ~Etat0(){}
-        void transition(Automate* automate, Symbole* symbole);
+        bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -47,7 +47,7 @@ class Etat1: public Etat
     
     public:
     Etat1() {}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -57,7 +57,7 @@ class Etat2: public Etat
     
     public:
     Etat2() {}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -67,7 +67,7 @@ class Etat3: public Etat
     
     public:
     Etat3() {}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -77,7 +77,7 @@ class Etat4: public Etat
     
     public:
     Etat4() {}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -87,7 +87,7 @@ class Etat5: public Etat
     
     public:
     Etat5() {}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -97,7 +97,7 @@ class Etat6: public Etat
     
     public:
     Etat6(){}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -107,7 +107,7 @@ class Etat7: public Etat
     
     public:
     Etat7(){}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -117,7 +117,7 @@ class Etat8: public Etat
     
     public:
     Etat8(){}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -127,7 +127,7 @@ class Etat9: public Etat
     
     public:
     Etat9(){}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 
@@ -138,7 +138,7 @@ class EtatAccepter: public Etat
     
     public:
     EtatAccepter(){}
-    void transition(Automate* automate, Symbole* symbole);
+    bool transition(Automate* automate, Symbole* symbole);
     
 };
 

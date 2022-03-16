@@ -2,131 +2,130 @@
 #include <iostream>
 #include <stdio.h>
 
-void Etat0:: transition(Automate* automate, Symbole* symbole)
+bool Etat0:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case INT : automate->decalage(symbole, new Etat3()); break;
-        case OPENPAR : automate->decalage(symbole, new Etat2()); break;
-        case EXPRESSION: automate->decalage(symbole, new Etat1()); break;
-        default: break;       
+        case INT : automate->decalage(symbole, new Etat3()); return true; 
+        case OPENPAR : automate->decalage(symbole, new Etat2()); return true;
+        case EXPRESSION: automate->decalage(symbole, new Etat1()); return true; 
+        default: return false;        
 
     }
 }
 
-void Etat1:: transition(Automate* automate, Symbole* symbole)
+bool Etat1:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case PLUS : automate->decalage(symbole, new Etat4()); break;
-        case MULT : automate->decalage(symbole, new Etat5()); break;
-        case FIN : automate->decalage(symbole, new EtatAccepter());break; // Accpeter!
-        default: break;       
+        case PLUS : automate->decalage(symbole, new Etat4()); return true; 
+        case MULT : automate->decalage(symbole, new Etat5()); return true; 
+        case FIN : automate->decalage(symbole, new EtatAccepter()); return true; // Accpeter!
+        default: return false;       
 
     }
 }
 
-void Etat2:: transition(Automate* automate, Symbole* symbole)
+bool Etat2:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case INT : automate->decalage(symbole, new Etat3()); break;
-        case OPENPAR : automate->decalage(symbole, new Etat2()); break;
-        case EXPRESSION: automate->decalage(symbole, new Etat6()); break;
-        default: break;       
+        case INT : automate->decalage(symbole, new Etat3()); return true; 
+        case OPENPAR : automate->decalage(symbole, new Etat2()); return true; 
+        case EXPRESSION: automate->decalage(symbole, new Etat6()); return true; 
+        default: return false;  
+    }
+}
+
+bool Etat3:: transition(Automate* automate, Symbole* symbole)
+{
+    switch(*symbole)
+    {
+        case PLUS : automate->reduction(1, symbole); return true; 
+        case MULT : automate->reduction(1, symbole); return true; 
+        case CLOSEPAR : automate->reduction(1, symbole); return true; 
+        case FIN : automate->reduction(1, symbole); return true; 
+        default:return false;        
 
     }
 }
 
-void Etat3:: transition(Automate* automate, Symbole* symbole)
+bool Etat4:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case PLUS : automate->reduction(1, symbole); break;
-        case MULT : automate->reduction(1, symbole); break;
-        case CLOSEPAR : automate->reduction(1, symbole); break;
-        case FIN : automate->reduction(1, symbole); break;
-        default: break;       
+        case INT : automate->decalage(symbole, new Etat3());return true; 
+        case OPENPAR : automate->decalage(symbole, new Etat2());return true; 
+        case EXPRESSION: automate->decalage(symbole, new Etat7()); return true; 
+        default:return false;     
 
     }
 }
 
-void Etat4:: transition(Automate* automate, Symbole* symbole)
+bool Etat5:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case INT : automate->decalage(symbole, new Etat3()); break;
-        case OPENPAR : automate->decalage(symbole, new Etat2()); break;
-        case EXPRESSION: automate->decalage(symbole, new Etat7()); break;
-        default: break;       
+        case INT : automate->decalage(symbole, new Etat3());return true; 
+        case OPENPAR : automate->decalage(symbole, new Etat2()); return true; 
+        case EXPRESSION: automate->decalage(symbole, new Etat8()); return true; 
+        default:return false;        
 
     }
 }
 
-void Etat5:: transition(Automate* automate, Symbole* symbole)
+bool Etat6:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case INT : automate->decalage(symbole, new Etat3()); break;
-        case OPENPAR : automate->decalage(symbole, new Etat2()); break;
-        case EXPRESSION: automate->decalage(symbole, new Etat8()); break;
-        default: break;       
+        case PLUS : automate->decalage(symbole, new Etat4()); return true; 
+        case MULT : automate->decalage(symbole, new Etat5()); return true; 
+        case CLOSEPAR : automate->decalage(symbole, new Etat9()); return true; 
+        default: return false;        
 
     }
 }
 
-void Etat6:: transition(Automate* automate, Symbole* symbole)
+bool Etat7:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case PLUS : automate->decalage(symbole, new Etat4()); break;
-        case MULT : automate->decalage(symbole, new Etat5()); break;
-        case CLOSEPAR : automate->decalage(symbole, new Etat9()); break;
-        default: break;       
+        case PLUS : automate->reduction(3, symbole); return true; 
+        case MULT : automate->decalage(symbole, new Etat5()); return true; 
+        case CLOSEPAR : automate->reduction(3, symbole); return true; 
+        case FIN : automate->reduction(3, symbole); return true; 
+        default: return false;       
 
     }
 }
 
-void Etat7:: transition(Automate* automate, Symbole* symbole)
+bool Etat8:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case PLUS : automate->reduction(3, symbole); break;
-        case MULT : automate->decalage(symbole, new Etat5()); break;
-        case CLOSEPAR : automate->reduction(3, symbole); break;
-        case FIN : automate->reduction(3, symbole); break;
-        default: break;       
+        case PLUS : automate->reduction(3, symbole); return true; 
+        case MULT : automate->reduction(3, symbole); return true; 
+        case CLOSEPAR : automate->reduction(3, symbole); return true; 
+        case FIN : automate->reduction(3, symbole); return true; 
+        default: return false ;       
 
     }
 }
 
-void Etat8:: transition(Automate* automate, Symbole* symbole)
+bool Etat9:: transition(Automate* automate, Symbole* symbole)
 {
     switch(*symbole)
     {
-        case PLUS : automate->reduction(3, symbole); break;
-        case MULT : automate->reduction(3, symbole); break;
-        case CLOSEPAR : automate->reduction(3, symbole); break;
-        case FIN : automate->reduction(3, symbole); break;
-        default: break;       
+        case PLUS : automate->reduction(3, symbole); return true; 
+        case MULT : automate->reduction(3, symbole); return true; 
+        case CLOSEPAR : automate->reduction(3, symbole); return true; 
+        case FIN : automate->reduction(3, symbole); return true; 
+        default: return false ;       
 
     }
 }
 
-void Etat9:: transition(Automate* automate, Symbole* symbole)
-{
-    switch(*symbole)
-    {
-        case PLUS : automate->reduction(3, symbole); break;
-        case MULT : automate->reduction(3, symbole); break;
-        case CLOSEPAR : automate->reduction(3, symbole); break;
-        case FIN : automate->reduction(3, symbole); break;
-        default: break;       
-
-    }
-}
-
-void EtatAccepter:: transition(Automate* automate, Symbole* symbole)
+bool EtatAccepter:: transition(Automate* automate, Symbole* symbole)
 { 
-
+    return false;
 }

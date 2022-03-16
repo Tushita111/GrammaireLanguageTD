@@ -64,14 +64,17 @@ void Automate:: run()
 {
     bool transitionCorrecte= true;
     Symbole* symbolCourant= this->lexer->Consulter();
+    cout<<"avant consulter"<< *symbolCourant<< endl;
     while( transitionCorrecte && *(symbolCourant)!=FIN)
     {
          transitionCorrecte=this->pileEtats->top()->transition(this, symbolCourant);
          this->lexer->Avancer();
-         cout<<"avant consulter"<< *symbolCourant<< endl;
          symbolCourant= this->lexer->Consulter();     
-
+        cout<<"apres consulter"<< *symbolCourant<< endl;
     }
+    cout<<"result"<<*(this->pileSymboles->top())<<endl;
+    this->pileSymboles->top()->Affiche();
+    cout<<"numEtat"<<this->pileEtats->top()->numEtat();
 }
 Automate:: ~Automate()
 {

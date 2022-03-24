@@ -14,3 +14,6 @@ void Expression::Affiche() {
    cout<<"("<<valeur<<")";
 }
 
+int Symbole::val() {return -1;}
+int Entier::val() {return valeur;}
+int Expression::val() {return valeur;}

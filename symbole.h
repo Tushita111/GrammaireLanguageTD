@@ -14,7 +14,7 @@ class Symbole {
       virtual ~Symbole() { }
       operator int() const { return ident; }
       virtual void Affiche();
-
+      virtual int val(); 
    protected:
       int ident;
 };
@@ -24,6 +24,7 @@ class Entier : public Symbole {
       Entier(int v) : Symbole(INT), valeur(v) { }
       ~Entier() { }
       virtual void Affiche();
+      virtual int val();
    protected:
       int valeur;
 };
@@ -33,6 +34,7 @@ class Expression : public Symbole {
       Expression(int v) : Symbole(EXPRESSION), valeur(v) { }
       ~Expression() { }
       virtual void Affiche();
+      virtual int val();
    protected:
       int valeur;
 };

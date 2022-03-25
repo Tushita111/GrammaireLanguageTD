@@ -108,11 +108,13 @@ void Automate::run()
         return;
     }
 
-    while (this->pileSymboles->size() != 1)
+    if (this->pileSymboles->size() != 1)
     {
-        this->pileSymboles->pop();
+        cout << "SYNTAX ERROR" << endl;
+    }else{
+        cout << "Resultat: " << this->pileSymboles->top()->val() << endl;
     }
-    cout << "Resultat: " << this->pileSymboles->top()->val() << endl;
+    
 }
 Automate::~Automate()
 {

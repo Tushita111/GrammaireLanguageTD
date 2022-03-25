@@ -3,7 +3,7 @@
 #include "automate.h"
 
 int main(void) {
-   string chaine("2*(5+2*5)+(1+2*12)");
+   string chaine("2*(5+2*5)+(1+2*12))");
    cout << "Operation: " << chaine << endl;
    Lexer l(chaine);
 

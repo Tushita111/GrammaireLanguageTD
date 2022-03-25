@@ -27,8 +27,11 @@ void Automate::reduction(int nbEtats, Symbole *prochainSymbole)
         Symbole *op2 = this->pileSymboles->top();
         this->pileSymboles->pop();
 
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
         this->pileEtats->top()->transition(this, new Expression(op1->val() + op2->val()));
         break;
@@ -43,8 +46,11 @@ void Automate::reduction(int nbEtats, Symbole *prochainSymbole)
         Symbole *op2 = this->pileSymboles->top();
         this->pileSymboles->pop();
 
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
         this->pileEtats->top()->transition(this, new Expression(op1->val() * op2->val()));
         break;
@@ -56,8 +62,11 @@ void Automate::reduction(int nbEtats, Symbole *prochainSymbole)
         this->pileSymboles->pop();
         this->pileSymboles->pop();
 
+        delete(this->pileEtats->top());
         this->pileEtats->pop();        
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
 
         this->pileEtats->top()->transition(this, op1);
@@ -67,6 +76,7 @@ void Automate::reduction(int nbEtats, Symbole *prochainSymbole)
     {
         Expression *val = new Expression(this->pileSymboles->top()->val());
         this->pileSymboles->pop();
+        delete(this->pileEtats->top());
         this->pileEtats->pop();
 
         this->pileEtats->top()->transition(this, val);
@@ -108,4 +118,5 @@ Automate::~Automate()
 {
     delete this->pileEtats;
     delete this->pileSymboles;
+    delete lexer;
 }

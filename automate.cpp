@@ -93,8 +93,13 @@ void Automate::run()
     stack<Symbole *> errors;
     bool transitionCorrecte = true;
     Symbole *symboleCourant = this->lexer->Consulter();
-    while ( *(symboleCourant) != FIN && transitionCorrecte)
+    int parenthese = 0;
+    while (this->pileEtats->top()->numEtat() != 10 && transitionCorrecte)
     {
+        if(*(symboleCourant) == CLOSEPAR) parenthese--;
+        else if(*(symboleCourant) == OPENPAR) parenthese++;
+
+
         transitionCorrecte = this->pileEtats->top()->transition(this, symboleCourant);
         if (*(symboleCourant) != FIN)
         {
@@ -102,19 +107,21 @@ void Automate::run()
             symboleCourant = this->lexer->Consulter();
         }
     }
-    if (!transitionCorrecte)
+    /*if (!transitionCorrecte)
     {
         cout << "SYNTAX ERROR (transition)" << endl;
         return;
-    }
-
-    if (this->pileSymboles->size() != 1)
+    }*/
+    //cout << this->pileEtats->size();
+    if (parenthese == 0 && this->pileEtats->top()->numEtat() == 10 && this->pileSymboles->size() == 2 && *(this->pileSymboles->top()) == FIN && transitionCorrecte && *(symboleCourant) == FIN)
     {
+        this->pileSymboles->pop();
+        cout << "Resultat: " << this->pileSymboles->top()->val() << endl;
+    }else{
         cout << "SYNTAX ERROR (symbole : " ;
         this->pileSymboles -> top() ->Affiche();
         cout<<")" <<endl;
-    }else{
-        cout << "Resultat: " << this->pileSymboles->top()->val() << endl;
+        
     }
     
 }
